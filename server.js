@@ -9,20 +9,12 @@ const cookieParser = require("cookie-parser");
 
 const ACTIONS = require("./actions");
 
-const { YSocketIO } = require("y-socket.io/dist/server");
-
 const io = require("socket.io")(server, {
   cors: {
     origin: process.env.CLIENT_URL || "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
-const ysocketio = new YSocketIO(io, {
-  // authenticate: (auth) => auth.token === 'valid-token',
-  // levelPersistenceDir: './storage-location',
-  // gcEnabled: true,
-});
-ysocketio.initialize();
 
 app.use(cookieParser());
 const corsOption = {
