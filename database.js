@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Promise = require("bluebird");
 
 function DBConnect() {
   mongoose.connect(process.env.DB_URL, {
