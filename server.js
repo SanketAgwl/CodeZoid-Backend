@@ -30,6 +30,10 @@ app.use(express.json({ limit: "8mb" }));
 app.use(router);
 
 app.get("/", (req, res) => {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://main--hilarious-ganache-b68a10.netlify.app"
+  );
   res.send("Hello from express Js");
 });
 
