@@ -1,16 +1,19 @@
 const mongoose = require("mongoose");
+const Promise = require("bluebird");
 
 function DBConnect() {
-  console.log(process.env.DB_URL);
   mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  const db = mongoose.connection;
-  db.on("error", console.error.bind(console, "connection error: "));
-  db.once("open", function () {
-    console.log("Connected successfully");
-  });
+
+  const database = mongoose.connection;
+
+  database.on(
+    "error",
+    console.error.bind(console, "❌ mongodb connection error")
+  );
+  database.once("open", () => console.log("✅ mongodb connected successfully"));
 }
 
 module.exports = DBConnect;
