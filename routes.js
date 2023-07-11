@@ -5,17 +5,20 @@ const authMiddleware = require("./middlewares/auth-middleware");
 const roomsController = require("./controllers/rooms-controller");
 const userController = require("./controllers/user-controller");
 
+// Middleware to set CORS headers for all routes
 router.use((req, res, next) => {
   const origin = req.headers.origin;
 
-  // Set CORS headers for all routes
-  res.setHeader("Access-Control-Allow-Origin", origin);
+  // Check if origin is defined before setting the header
+  if (origin) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   res.setHeader("Access-Control-Allow-Methods", "GET, POST");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   next();
 });
-
 router.post("/api/send-otp", authController.sendOtp);
 router.post("/api/verify-otp", authController.verifyOtp);
 router.post("/api/activate", authMiddleware, activateController.activate);
