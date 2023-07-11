@@ -31,11 +31,11 @@ app.use(express.json({ limit: "8mb" }));
 app.use(router);
 
 app.get("/", (req, res) => {
-  const origin = req.header;
-  console.log("Request: ", origin);
-
+  const origin = req.headers;
+  console.log("Request headers: ", origin);
   // Set the Access-Control-Allow-Origin header
-  // res.setHeader("Access-Control-Allow-Origin", origin.headers);
+  res.setHeader("Access-Control-Allow-Origin", origin.headers);
+  console.log("Response headers: ", res.headers);
 
   res.send("Hello from express Js");
 });
