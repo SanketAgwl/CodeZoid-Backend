@@ -29,20 +29,13 @@ DbConnect();
 app.use(express.json({ limit: "8mb" }));
 app.use(router);
 
-app.get("/api/send-otp", (req, res) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://main--hilarious-ganache-b68a10.netlify.app"
-  );
-  // Handle the send-otp request
-  res.send("Response for /api/send-otp");
-});
-
 app.get("/", (req, res) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://main--hilarious-ganache-b68a10.netlify.app"
-  );
+  const origin = req.headers.origin;
+  console.log("Request origin:", origin);
+
+  // Set the Access-Control-Allow-Origin header
+  res.setHeader("Access-Control-Allow-Origin", origin);
+
   res.send("Hello from express Js");
 });
 
