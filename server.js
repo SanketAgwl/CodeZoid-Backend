@@ -33,6 +33,8 @@ app.get("/", (req, res) => {
   res.send("Hello from express Js");
 });
 
+console.log("CLIENT_URL:", process.env.CLIENT_URL);
+
 // Sockets
 const socketUserMap = {};
 
