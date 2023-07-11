@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-const Promise = require("bluebird");
-
-mongoose.Promise = Promise;
 
 function DBConnect() {
+  console.log(process.env.DB_URL);
   mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
