@@ -14,6 +14,7 @@ const io = require("socket.io")(server, {
     origin: process.env.CLIENT_URL || "http://localhost:3000",
     methods: ["GET", "POST"],
   },
+  allowEIO3: true, // Enable credentials
 });
 
 app.use(cookieParser());
@@ -30,7 +31,7 @@ app.use(express.json({ limit: "8mb" }));
 app.use(router);
 
 app.get("/", (req, res) => {
-  const origin = req;
+  const origin = req.header;
   console.log("Request: ", origin);
 
   // Set the Access-Control-Allow-Origin header

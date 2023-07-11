@@ -81,11 +81,15 @@ class AuthController {
     tokenService.storeRefreshToken(refreshToken, user._id);
 
     res.cookie("refreshToken", refreshToken, {
+      sameSite: "none", // Set sameSite attribute to 'none'
+      secure: req.headers["x-forwarded-proto"] === "https", // Set secure flag based on the protocol
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
     });
 
     res.cookie("accessToken", accessToken, {
+      sameSite: "none", // Set sameSite attribute to 'none'
+      secure: req.headers["x-forwarded-proto"] === "https", // Set secure flag based on the protocol
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
     });
@@ -135,11 +139,15 @@ class AuthController {
     }
     // put in cookie
     res.cookie("refreshToken", refreshToken, {
+      sameSite: "none", // Set sameSite attribute to 'none'
+      secure: req.headers["x-forwarded-proto"] === "https", // Set secure flag based on the protocol
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
     });
 
     res.cookie("accessToken", accessToken, {
+      sameSite: "none", // Set sameSite attribute to 'none'
+      secure: req.headers["x-forwarded-proto"] === "https", // Set secure flag based on the protocol
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true,
     });
