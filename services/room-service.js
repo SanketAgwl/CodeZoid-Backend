@@ -56,6 +56,7 @@ class RoomService {
   }
 
   async updateRoomInMongoDB(roomId) {
+    console.log("Updating Room");
     try {
       const room = roomCache.get(roomId);
       if (!room) {
@@ -80,6 +81,7 @@ class RoomService {
       // Handle error
       console.error(error);
     }
+    console.log("Room Updated");
   }
 }
 
