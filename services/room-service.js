@@ -81,7 +81,8 @@ class RoomService {
       // Handle error
       console.error(error);
     }
-    console.log("Room Updated", this.getRoom(roomId));
+
+    console.log("Room Updated", await this.getRoom(roomId));
   }
 }
 
