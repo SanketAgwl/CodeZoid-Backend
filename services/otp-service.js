@@ -41,7 +41,7 @@ class OtpService {
         subject: "Please confirm your account",
         html: `<h1>Email Confirmation</h1>
           <h2>Hello</h2>
-          <p>Your Codershouse OTP is ${otp}. Happy coding!</p>
+          <p>Your CodeZoid OTP is ${otp}. Happy coding!</p>
           </div>`,
       })
       .catch((err) => console.log(err));
